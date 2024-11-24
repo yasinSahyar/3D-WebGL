@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D Card & Rotating Pyramid</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(120deg, #c2e9fb, #a1c4fd);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h2 {
+            margin: 20px 0;
+            color: #333;
+        }
+
+        /* 3D Flip Card */
+        .scene {
+            width: 300px;
+            height: 200px;
+            perspective: 1000px;
+            margin: 20px;
+        }
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .card:hover {
+            transform: rotateY(180deg);
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .face1 {
+            background: #4caf50;
+        }
+
+        .face2 {
+            background: #f44336;
+            transform: rotateY(180deg);
+        }
+
+        /* Rotating Pyramid */
+         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .pyramid {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transform: rotateY(326deg) rotateX(2deg) rotateZ(359deg);
+            animation: rotate 5s linear infinite;
+        }
+        .side {
+            width: 0;
+            height: 0;
+            position: absolute;
+            opacity: 0.7;
+            border: 100px solid transparent;
+            border-bottom: 200px solid red;
+            border-top: 0px;
+        }
+        .base {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: translateY(73px) rotateX(90deg);
+            border: 0;
+            background: blue;
+        }
+        .one {
+            transform: rotateX(30deg);
+            transform-origin: 0 0;
+        }
+        .two {
+            transform-origin: 100px 0;
+            transform: rotateY(90deg) rotateX(-30deg);
+            border-bottom-color: purple;
+        }
+        .three {
+            transform-origin: 100px 0;
+            transform: rotateY(270deg) rotateX(-30deg);
+            border-bottom-color: hotpink;
+        }
+        .four {
+            transform-origin: 100px 0;
+            transform: rotateY(0) rotateX(-30deg);
+            border-bottom-color: yellow;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotateY(0) rotateX(30deg) rotateZ(30deg);
+            }
+            to {
+                transform: rotateY(360deg) rotateX(30deg) rotateZ(30deg);
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <h2>3D Flip Card</h2>
+    <div class="scene">
+        <div class="card">
+            <div class="face face1">Hello!</div>
+            <div class="face face2">Goodbye!</div>
+        </div>
+    </div>
+
+    <h2>Rotating Pyramid</h2>
+    <div class="pyramid">
+        <div class="base"></div>
+        <div class="side one"></div>
+        <div class="side two"></div>
+        <div class="side three"></div>
+        <div class="side four"></div>
+      </div>
+</body>
+</html>
